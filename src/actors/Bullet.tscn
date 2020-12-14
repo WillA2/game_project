@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/bullet.png" type="Texture" id=1]
+[ext_resource path="res://src/actors/Bullet.gd" type="Script" id=2]
+
+[sub_resource type="RayShape2D" id=3]
+length = 24.0
+
+[node name="Bullet" type="KinematicBody2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource( 2 )
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 22
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( -8, -16 )
+rotation = -1.5708
+shape = SubResource( 3 )
+
+[node name="bullet" type="Sprite" parent="."]
+position = Vector2( 0, -16 )
+texture = ExtResource( 1 )
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

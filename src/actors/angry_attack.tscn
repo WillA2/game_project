@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/angry_attack.png" type="Texture" id=1]
+[ext_resource path="res://src/actors/angry_attack.gd" type="Script" id=2]
+
+[node name="angry_attack" type="KinematicBody2D"]
+collision_layer = 0
+script = ExtResource( 2 )
+
+[node name="angry_attack" type="Sprite" parent="."]
+position = Vector2( -16, -16 )
+texture = ExtResource( 1 )
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+position = Vector2( -16, -16 )
+polygon = PoolVector2Array( 44, -29.9, 44, -28.6, 61, -24.6, 61, -23.1, 74, -15.1, 74, -12.7, 78, -7.70001, 78, 4, 76.4, 4, 74.4, 10, 72.8, 10, 65.8, 17, 63.4, 17, 42.4, 25, 35, 25, 10, 26, 10, 24.7, -13, 20.7, -13, 19.4, -21, 16.4, -21, 14.9, -30, 6.89999, -30, 4.39999, -32.4, -9, -30, -9, -20, -22, -17.5, -22, -5.5, -28, -1.29999, -28, 9, -29.7, 9, -31.1 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
+autostart = true
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
